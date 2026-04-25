@@ -323,7 +323,7 @@ npm run build        # outputs to /dist
 
 ## Team
 
-Built at the **Kiro Spark Challenge · ASU · April 24, 2026** by Jenitha Kurra, Poojitha Madhyala, Vishva Doshi.
+Built at the **Kiro Spark Challenge · ASU · April 24, 2026** by Jenitha Kurra, Sri Sai Poojitha Madhyala, Vishva Doshi.
 
 ---
 
