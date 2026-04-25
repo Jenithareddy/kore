@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "BandWatt",
+  "version": "0.1.0",
+  "description": "See the carbon cost of your digital life",
+  "icons": {
+    "16": "assets/icon-16.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  },
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["src/content-scripts/youtube-cs.ts", "src/content-scripts/badge-cs.ts"]
+    },
+    {
+      "matches": ["*://*.netflix.com/*"],
+      "js": ["src/content-scripts/netflix-cs.ts", "src/content-scripts/badge-cs.ts"]
+    },
+    {
+      "matches": [
+        "*://chat.openai.com/*",
+        "*://claude.ai/*",
+        "*://gemini.google.com/*"
+      ],
+      "js": ["src/content-scripts/ai-cs.ts", "src/content-scripts/badge-cs.ts"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "48": "assets/icon-48.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "tabs",
+    "webRequest",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.netflix.com/*",
+    "*://chat.openai.com/*",
+    "*://claude.ai/*",
+    "*://gemini.google.com/*",
+    "*://api.electricitymap.org/*",
+    "*://api.eia.gov/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

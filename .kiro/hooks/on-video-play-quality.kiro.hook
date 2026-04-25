@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "On Video Play — Quality Detection &amp; Scheduler Check",
+  "description": "Fires when video content script files are edited. Reminds the agent to read the quality selector from the DOM using the correct priority order and trigger the scheduler nudge check for long videos.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/content-scripts/youtube-cs.ts",
+      "src/content-scripts/netflix-cs.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A video content script was just edited. Verify the following:\n\nQUALITY DETECTION (must follow this exact priority order per supported_platforms.md):\n1. First: read quality label text from the player UI DOM (e.g. \".ytp-quality-badge\" for YouTube, \"[data-uia='video-quality']\" for Netflix)\n2. Second: if DOM label unavailable, use video.getVideoPlaybackQuality() as a secondary signal (frame stats only — not resolution)\n3. Third: if neither available, default to \"1080p\"\nQuality is polled every 2 seconds during active playback. On quality change, emit QUALITY_CHANGE to the service worker.\n\nSCHEDULER NUDGE TRIGGER:\n- When a video starts playing, check if estimated duration > 20 minutes\n- If yes, send GET_GRID_FORECAST to the service worker to trigger nudge evaluation\n- Duration can be estimated from video.duration if available\n\nAUTOPLAY DETECTION:\n- YouTube: check data-autoplay attribute AND .ytp-autonav-endscreen-upnext-header visibility\n- Netflix: check [data-uia=\"next-episode-seamless-button\"] OR .watch-video--next-episode-point visibility\n- Tag ACTIVITY_START with autoplay: true when detected\n\nIf any of these patterns are missing or incorrect, flag before saving."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Pre-Network Ethics Gate",
+  "description": "Runs the Ethics Gate check before any write tool executes that touches network-related code. Reminds the agent to enforce the allowlist (api.electricitymap.org, api.eia.gov only) and payload inspection rules defined in ethics_gate.spec.md and privacy_rules.md.",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A file write is about to happen. If this file contains any outbound network calls (fetch, XMLHttpRequest, chrome.webRequest, etc.), verify the following before proceeding:\n1. The destination domain is ONLY api.electricitymap.org or api.eia.gov — no other domains permitted\n2. The request payload contains ONLY: regionCode, timestamp rounded to nearest hour, and API auth token\n3. No URL, hostname, page title, tab ID, user ID, GPS coordinates, IP address, or PII patterns are included in the payload\n4. The Ethics Gate declarativeNetRequest rules in src/ethics-gate/rules.json cover this request path\n\nIf any of these checks fail, block the operation and explain which rule was violated. Reference ethics_gate.spec.md and privacy_rules.md for the full ruleset."
+  }
+}

@@ -1,0 +1,82 @@
+body { background: #0d0d0d; }
+.ob-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #e0e0e0;
+}
+.ob-header { text-align: center; margin-bottom: 32px; }
+.ob-header h1 { font-size: 28px; margin: 0 0 16px; color: #4ade80; }
+.ob-progress { display: flex; justify-content: center; gap: 8px; }
+.ob-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
+.ob-dot.active { background: #4ade80; }
+.ob-dot.done { background: #22c55e; }
+.ob-screen { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ob-screen h2 { font-size: 22px; margin: 0 0 12px; color: #e0e0e0; }
+.ob-screen p { line-height: 1.6; color: #aaa; }
+.ob-list { padding-left: 20px; line-height: 1.8; color: #ccc; }
+.ob-list li { margin-bottom: 8px; }
+.ob-list strong { color: #4ade80; }
+.ob-note {
+  background: #0a1a0a;
+  border: 1px solid #2a4a2a;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #4ade80;
+}
+.ob-input-group { margin: 16px 0; }
+.ob-input-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #e0e0e0; }
+.ob-input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  background: #111;
+  border: 1px solid #333;
+  color: #e0e0e0;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+.ob-hint { font-size: 12px; color: #666; margin-top: 6px; }
+.ob-privacy-box {
+  background: #1a0a0a;
+  border: 1px solid #4a2a2a;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+}
+.ob-privacy-box h3 { margin: 0 0 8px; font-size: 14px; color: #ef4444; }
+.ob-privacy-box ul { margin: 0; padding-left: 18px; line-height: 1.8; color: #ccc; }
+.ob-privacy-box code { background: #222; padding: 1px 4px; border-radius: 3px; font-size: 12px; color: #4ade80; }
+.ob-privacy-allowed {
+  background: #0a1a0a;
+  border-color: #2a4a2a;
+}
+.ob-privacy-allowed h3 { color: #4ade80; }
+.ob-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+.ob-btn-primary {
+  background: #4ade80;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ob-btn-primary:hover { background: #22c55e; }
+.ob-btn-secondary {
+  background: none;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #aaa;
+}
+.ob-btn-secondary:hover { border-color: #666; color: #e0e0e0; }

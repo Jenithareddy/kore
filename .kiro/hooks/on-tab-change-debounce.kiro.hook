@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "On Tab Change — Debounce Activity Logging",
+  "description": "Fires when content script files are edited. Reminds the agent to debounce activity logging correctly and not emit duplicate or incomplete activity events to the service worker.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/content-scripts/*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A content script file was just edited. Check that activity logging is correctly debounced:\n1. ACTIVITY_START is only emitted once per playback session — not on every DOM poll tick\n2. ACTIVITY_STOP is emitted on pause/ended/tab-hidden, not on every quality poll\n3. QUALITY_CHANGE events are debounced — rapid quality fluctuations should not produce multiple events within a 2-second window\n4. The port-based keep-alive (chrome.runtime.connect) is opened on play and closed on stop/tab-hidden\n5. No activity events are emitted when the content script first loads — only on actual user/platform actions\n\nIf any of these patterns are violated, flag the issue before the file is saved."
+  }
+}
