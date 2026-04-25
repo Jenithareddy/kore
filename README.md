@@ -321,19 +321,9 @@ npm run build        # outputs to /dist
 
 ---
 
-## Roadmap
-
-- [ ] Zoom / Google Meet integration (video call tracking)
-- [ ] Mobile companion (Safari Web Extension)
-- [ ] Opt-in campus leaderboard (hashed IDs, no raw data)
-- [ ] Weekly encrypted summary export
-- [ ] CI grid-intensity integration (shift your GitHub Actions to off-peak hours)
-
----
-
 ## Team
 
-Built at the **Kiro Spark Challenge · ASU · April 24, 2026** by Jenitha Kurra.
+Built at the **Kiro Spark Challenge · ASU · April 24, 2026** by Jenitha Kurra, Poojitha Madhyala, Vishva Doshi.
 
 ---
 
